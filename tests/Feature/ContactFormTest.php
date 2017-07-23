@@ -26,12 +26,16 @@ class ContactFormTest extends TestCase
         ->assertStatus(302)
         ->assertSessionHas('message', 'success');
 
-      $contact = Contact::first();
+      $contact = new Contact();
+
+      $contact = $contact->orderBy('id', 'desc')->first();
 
       $this->assertEquals($contact->full_name, 'Test User');
       $this->assertEquals($contact->email, 'testuser@example.com');
       $this->assertEquals($contact->telephone, '555-555-5555');
       $this->assertEquals($contact->message, 'This is a test message');
+
+      $contact->delete();
     }
 
     public function test_submit_form_with_missing_data_returns_unprocessable_entity()
