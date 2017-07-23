@@ -22,6 +22,8 @@
   {{-- Theme CSS --}}
   <link href="css/grayscale.min.css" rel="stylesheet">
 
+  @stack( 'styles' )
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -53,6 +55,8 @@
 
   {{-- Theme JavaScript --}}
   <script src="js/grayscale.min.js"></script>
+
+  @stack( 'scripts' )
 
 </body>
 
