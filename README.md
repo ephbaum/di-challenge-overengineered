@@ -1,73 +1,58 @@
 # Dealer Inspire PHP Code Challenge
 
-Welcome to the Dealer Inspire PHP Code challenge. 
+## Over-engineered with Laravel
 
-## Getting Started
+Welcome to my submission for your PHP Code Challenge using Laravel. Because I've applied for a Laravel focused position, I have chosen to use Laravel to demonstrate I have a working knowledge of Laravel. I've also used the word Laravel far too many times in this first section of this README and feel it best if we just move on, please.
 
-First thing's first - you'll need to fork this git repository to somewhere else. 
-Make sure that your source code is publicly available in a git repository when 
-you're done.  (Like Bitbucket or GitHub.  If you're super-nerdy and host your 
-own public repo, just make sure the server is up 24/7 - our code-review monkeys
-like to work in the middle of the night.)  
+## Updated Workflow
 
-You don't have to host a working copy of the code, we'll be checking it out locally 
-to review it.  That's a good reminder - we'll be testing your code by running the following
-commands:
+Because I have opted to over-engineer this using a full Laravel installation, I'm asking that you kindly use the following workflow for best results:
 
 ```
 cd your-repo-checkout
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+Update your .env file with your MySQL credentials.
+
+```
+php artisan migrate
 phpunit
 php -S 127.0.0.1:9999 -t public
 ```
 
-Our working directory will be your git repo checkout.  We'll run PHPUnit in that directory.
-If all the tests pass, we may browse to it using the built-in PHP server, expecting
-your publicly browsable code in the `public` folder.
 
-## What's Provided
+## Outcome
 
-We've provided this repository for you to fork.  Inside, you'll find a Bootstrap-based 
-template HTML file with a placeholder for your challenge.  You are not expected to make any
-design changes or add anything to the template.  However, we'd expect that the code challenge part
-(it's a form) at least matches the style of this website. (The styling is built into the 
-template.)
+[x] Your contact form should be in valid HTML in our template. It should match the style of the template.
 
-## The Challenge
+[x] Your back-end processing should be done in PHP. You may use a framework, or plain PHP - either is fine.
 
-Please create a contact form in the contact form page of the website template.  Your contact
-form should contain the following required fields:
+[x] Your contact form data should be validated.
 
-- Full Name
-- Email
-- Message
+[x] One copy of the data should be emailed to the owner (listed above).  You can choose either HTML or plaintext email (or a combination).
 
-You should also have the following non-required fields:
+[x] One copy of the data should be kept in a MySQL, MongoDB or Postgres database.
 
-- Phone
+[x] Some indication that the contact form has been sent should be given.
 
-Once valid information is received from the form, two processes should occur.
+[x] You should have PHPUnit-compatible unit tests for your application.
 
-First, email a copy of the contact request to `guy-smiley@example.com`
+[x] Provide either a database schema file or a programmatic way of creating your database / tables.
 
-Second, keep a copy of the contact form in a database so that we can review the contact form later. 
-You do not need to provide an interface to access that data (for example, there will be no admin login).
+[x] The completed work is available in a public git repository for us to checkout and review.
 
-## Expectations
 
-Your contact form should be in valid HTML in our template. It should match the style of the template.
+## Caveats & Explanations
 
-Your back-end processing should be done in PHP. You may use a framework, or plain PHP - either is fine.
+This is now a complete application for no reason except to show that I can make a complete application. I could have opted for a vanilla PHP as I would have used a couple decades ago, but I felt I would be better off showing I am capable of actually using the Laravel framework and its various components.
 
-Your contact form data should be validated.
+All front-end validation of this contact form are handled via only HTML5 `required` attribute. I chose not to implement any additional JS as it felt outside of the scope of the challenge. Back-end validation is handled by Laravel with custom messaging.
 
-One copy of the data should be emailed to the owner (listed above).  You can choose either HTML or plaintext email (or a combination).
- 
-One copy of the data should be kept in a MySQL, MongoDB or Postgres database.
+The PHPUnit test I've included is only a couple of basic feature tests with a few assertions to demonstrate understanding. I opted NOT to test email sending, for example, but instead chose to focus on two core components: That data submitted to end point would be stored, and that if data was missing when submitted, end point would return appropriate status code. I could have included a variety of Unit Tests for the model, controller, email sending, etc., but didn't want to get too bogged down on that for this challenge.
 
-Some indication that the contact form has been sent should be given.
+Finally, this might seem silly, but I feel it worth pointing out that I am a 2 spaces, normally with spaces in parens, kind of guy. I'm also a fan of breaking chained methods, as well as aligning I will use whatever standard the team dictates, I just have my Vim set that way by default. My apologies of this offends you.
 
-You should have PHPUnit-compatible unit tests for your application.
-
-Provide either a database schema file or a programmatic way of creating your database / tables.
- 
-The completed work is available in a public git repository for us to checkout and review.
+Thank you, I look forward to hearing from you!
