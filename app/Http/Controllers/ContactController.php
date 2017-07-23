@@ -52,7 +52,7 @@ class ContactController extends Controller
 
     private function notifyAdmin( $contactData )
     {
-      return Mail::to('guy-smiley@example.com')
+      return Mail::to(env('GUY_SMILEY_EMAIL'))
         ->send(new ContactForm($contactData));
     }
 
