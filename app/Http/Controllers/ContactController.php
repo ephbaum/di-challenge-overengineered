@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactForm;
 use Validator;
 
 use App\Contact;
@@ -14,7 +15,6 @@ class ContactController extends Controller
 
     public function submit(Request $request)
     {
-      Log::info( $request );
 
       $messages = [
         'required' => 'The :attribute field is required.',
@@ -33,7 +33,7 @@ class ContactController extends Controller
 
       $this->notifyAdmin($request->all());
 
-      return redirect('/')->with([ 
+      return redirect('/')->with([
         'message' => 'success'
       ]);
     }
@@ -47,12 +47,13 @@ class ContactController extends Controller
       $contact->telephone = $contactData['telephone'];
       $contact->message   = $contactData['message'];
 
-      $contact->save();
+      return $contact->save();
     }
 
     private function notifyAdmin( $contactData )
     {
-      //
+      return Mail::to('guy-smiley@example.com')
+        ->send(new ContactForm($contactData));
     }
 
 }
