@@ -14,3 +14,5 @@
 Route::get('/', function () {
   return view( 'home.index' );
 });
+
+Route::post('/contact/submit', 'ContactController@submit')->name('contact-submit');

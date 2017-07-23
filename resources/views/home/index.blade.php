@@ -3,6 +3,27 @@
 {{-- Navigation --}}
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
   <div class="container">
+
+  @if( $errors->any() )
+    @component( 'alerts.danger' )
+      @slot( 'title' )
+        Contact Form Problem
+      @endslot
+      @foreach( $errors->all() as $error )
+        <p>{{ $error }}</p>
+      @endforeach
+    @endcomponent
+  @endif
+
+  @if( Session::has('message') && Session::get('message') === 'success' )
+    @component( 'alerts.success' )
+      @slot( 'title' )
+        Contact form successfully submitted, thank you!
+      @endslot
+    @endcomponent
+  @endif
+
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
         Menu <i class="fa fa-bars"></i>
